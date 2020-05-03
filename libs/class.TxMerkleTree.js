@@ -111,11 +111,10 @@ class TxMerkleTree {
     }
 
 
+    static get CLASS_ID() { return '2fb1213fafdfe5bf7c1467b2b5b260956ff9d23cd05712180b62cf773f34f51b'; }
+    static TEST_INSTANCE(TxMerkleTree) { return new TxMerkleTree([]); }
     static [Symbol.hasInstance](obj) {
-        return pu.isInstanceOfByName(obj, 'TxMerkleTree') &&
-            pu.isFunction(obj.withFirstHash) &&
-            pu.isFunction(obj.withFirst) &&
-            pu.hasGetters(obj, 'branchBufArr', 'branchHexArr');
+        return pu.isInstanceOfById(obj, TxMerkleTree.CLASS_ID);
     }
 }
 

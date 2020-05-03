@@ -454,42 +454,4 @@ describe('CoinbaseMerkleTree', () => {
             });
         });
     });
-
-    describe('instanceof handling', () => {
-        beforeEach(() => { tree = new MintTxMerkleTree([]) });
-
-        it('should return true when the instance is exact', () => {
-            assert.strictEqual(tree instanceof MintTxMerkleTree, true);
-        });
-
-        it('should return false when the instance is NOT exact', () => {
-
-            class NotTxMerkleTree {}
-            const not = new NotTxMerkleTree();
-
-            assert.strictEqual(not instanceof MintTxMerkleTree, false);
-        });
-
-        it('should return true when the instance extends the valid class', () => {
-
-            class ExtendedTxMerkleTree extends MintTxMerkleTree {}
-            const extended = new ExtendedTxMerkleTree([]);
-
-            assert.strictEqual(extended instanceof MintTxMerkleTree, true);
-        });
-
-        it('should return true if the instance meets all of the API criteria', () => {
-
-            class TxMerkleTree {
-                withFirstHash() {}
-                withFirst() {}
-                get branchBufArr() {}
-                get branchHexArr() {}
-            }
-
-            const substitute = new TxMerkleTree();
-
-            assert.strictEqual(substitute instanceof MintTxMerkleTree, true);
-        });
-    });
 });
